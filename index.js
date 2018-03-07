@@ -44,16 +44,19 @@ app.post('/login', function (req, res) {
     var sql = "SELECT * FROM user where user=? AND pass=?";
     connection.query(sql, [user, pass], function (error, result, field) {
         if (error) throw error;
-        res.json(result.user)
-        // if (!!!result) {
-        //     var obj = new Object();
-        //     obj.desription = "succes";
-        //     obj.status = "1";
-        //     var value = JSON.stringify(obj);
-        //     res.json(obj);
-        // } else {
-        //     res.json(result)
-        // }
+        
+        if (result.length > 0) {
+            var obj = new Object();
+            obj.desription = "succes";
+            obj.status = "1";
+            res.json(obj);
+        } else {
+            var obj = new Object();
+            obj.desription = "failed";
+            obj.status = "0";
+            //var value = JSON.stringify(obj);
+            res.json(obj)
+        }
 
     });
 
