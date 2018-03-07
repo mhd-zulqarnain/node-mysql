@@ -54,7 +54,7 @@ app.post('/login', function (req, res) {
             var obj = new Object();
             obj.desription = "failed";
             obj.status = "0";
-            //var value = JSON.stringify(obj);
+            //var value = JSON.stringify(obj); not needed
             res.json(obj)
         }
 
